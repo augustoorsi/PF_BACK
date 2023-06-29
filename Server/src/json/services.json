@@ -1,0 +1,54 @@
+[
+    {
+        "name": "Wifi",
+        "icon": "fa-solid fa-wifi"
+    },
+    {
+        "name": "Televisor",
+        "icon": "fa-solid fa-tv"
+    },
+    {
+        "name": "Cocina",
+        "icon": "fa-solid fa-kitchen-set"
+    },
+    {
+        "name": "Lavarropas",
+        "icon": "fa-regular fa-washing-machine"
+    },
+    {
+        "name": "Aire acondicionado",
+        "icon": "fa-solid fa-snowflake"
+    },
+    {
+        "name": "Calefaccion",
+        "icon": "fa-solid fa-temperature-arrow-up"
+    },
+    {
+        "name": "Pileta",
+        "icon": "fa-solid fa-person-swimming"
+    },
+    {
+        "name": "Parrilla",
+        "icon": "fa-solid fa-fire-flame-curved"
+    },
+    {
+        "name": "Estacionamiento libre",
+        "icon": "fa-solid fa-square-parking"
+    },
+    {
+        "name": "Acceso al lago",
+        "icon": "fa-solid fa-water"
+    },
+    {
+        "name": "Acceso a la playa",
+        "icon": "fa-solid fa-umbrella-beach"
+    },
+    {
+        "name": "Bañera",
+        "icon": "fa-solid fa-bath"
+    },
+    {
+        "name": "Jacuzzi",
+        "icon": "fa-solid fa-hot-tub"
+    }
+]
