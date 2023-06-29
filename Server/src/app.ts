@@ -22,7 +22,7 @@ server.use(bodyParser.json({ limit: '50mb' }));
 server.use(morgan('dev'));
 server.use(
     cors({
-      origin: '*',
+      origin: 'https://pf-airbnb.vercel.app/',
       credentials: true,
       allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept',
       methods: 'GET, POST, OPTIONS, PUT, DELETE',
