@@ -1,10 +1,9 @@
 import sequelize from "../../../db";
-import { PropertyAttributes } from "../../../models/Interfaces";
 
-const { Properties, Users } = sequelize.models;
+const { Properties, Users, Favorites } = sequelize.models;
 
 const updateFavorites = async (id_user:string, id_property:string)=>{
-
+    const favBody: any = { id_user, id_property }
     const user: any = await Users.findByPk(id_user);
     const property:any =await Properties.findByPk(id_property)
 
@@ -14,8 +13,9 @@ const updateFavorites = async (id_user:string, id_property:string)=>{
     if (!property) {
         throw new Error('La propiedad no existe');
         }
-        await user.addProperty(property)
-        await property.addUser(user)
+        const favorite = await Favorites.create(favBody)
+        await favorite.setUser(user)
+        await favorite.setProperty(property)
 }
 
 export default updateFavorites
