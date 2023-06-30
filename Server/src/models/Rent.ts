@@ -1,7 +1,7 @@
 
 import { DataTypes, Model, Sequelize } from 'sequelize';
 import { RentAttributes } from './Interfaces';
-import { INTEGER } from 'sequelize';
+
 
 interface UserInstance extends Model<RentAttributes>, RentAttributes { }
 
@@ -53,6 +53,11 @@ const Rent = (sequelize: Sequelize) => {
         payment_date: {
             type: DataTypes.DATE,
             allowNull: true
+        },
+        review_status: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: false,
         },
         creation_date: {
             type: DataTypes.DATE,

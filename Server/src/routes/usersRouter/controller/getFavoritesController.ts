@@ -1,22 +1,16 @@
 import sequelize from '../../../db';
 
-const {Properties, Favorites } = sequelize.models;
+const {Users, Favorites, Properties } = sequelize.models;
 
 const getFavoritesController = async (id_user:any) => {
-    const properties = await Favorites.findAll({
-        where: {userId : id_user }
-    })
+    const user = await Users.findByPk(id_user, {
+        include: {
+            model: Favorites,
+            include: Properties
+        }
+    });
     
-    const propertiesId = properties.map((favorite:any)=> favorite.dataValues.propertyId)
-    console.log(propertiesId);
-    
-
-    const favoriteProperties = await Properties.findAll({
-        where: {id_property: propertiesId}
-    })
-
-
-    return favoriteProperties
+    return user
 };
 
 export default getFavoritesController;
