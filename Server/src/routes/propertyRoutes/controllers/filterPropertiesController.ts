@@ -69,10 +69,12 @@ const filterPropertiesController = async (filterProperties: Partial<any>, page: 
         whereClause.property_type = property_type;
     }
 
-    const guestsClause: any = {};
+    const maxGuestsClause: any = {};
 
     if (max_guests !== undefined) {
-        guestsClause.max_guests = { [Op.lte]: max_guests };
+      maxGuestsClause.max_guests = {
+        [Op.gte]: max_guests,
+      };
     }
 
     const priceClause: any = {};
@@ -174,12 +176,12 @@ const filterPropertiesController = async (filterProperties: Partial<any>, page: 
         where: {
             ...whereClause,
             ...priceClause,
-            ...guestsClause,
+            ...maxGuestsClause,
             ...bathroomsClause,
             ...bedsClause,
             ...roomsClause,
             ...accessibilityClause,
-            ...(max_guests !== undefined ? { max_guests: { [Op.lte]: max_guests } } : {}),
+
             ...(start_date && end_date ? { start_date: { [Op.lte]: start_date }, end_date: { [Op.gte]: end_date } } : {}),
             is_active: true
         },
@@ -201,7 +203,7 @@ const filterPropertiesController = async (filterProperties: Partial<any>, page: 
         where: {
             ...whereClause,
             ...priceClause,
-            ...guestsClause,
+            ...maxGuestsClause,
             ...bathroomsClause,
             ...bedsClause,
             ...roomsClause,

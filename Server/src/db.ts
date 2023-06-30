@@ -6,6 +6,7 @@ import Rent from './models/Rent';
 import Property from './models/Property';
 import Service from './models/Service';
 import Location from './models/Locations';
+import Favorite from './models/Favorites';
 
 dotenv.config();
 const { DB_DEPLOY } = process.env;
@@ -27,9 +28,11 @@ Rent(sequelize);
 Property(sequelize);
 Service(sequelize);
 Location(sequelize);
+Favorite(sequelize);
 
 
-const { Users, Ratings, Rents, Properties, Services } = sequelize.models
+
+const { Users, Ratings, Rents, Properties, Services, Favorites } = sequelize.models
 
 Users.hasMany(Properties, { foreignKey: 'id_user' });
 Properties.belongsTo(Users, { foreignKey: 'id_user' })
@@ -42,8 +45,10 @@ Properties.hasMany(Rents, { foreignKey: 'id_property' });
 Rents.belongsTo(Users, { foreignKey: 'id_user' });
 Rents.belongsTo(Properties, { foreignKey: 'id_property' });
 
-Properties.belongsToMany(Users, { through: 'Favorites', foreignKey: 'propertyId' });
-Users.belongsToMany(Properties, { through: 'Favorites', foreignKey: 'userId' });
+Users.hasMany(Favorites, { foreignKey: 'id_user' });
+Properties.hasMany(Favorites, { foreignKey: 'id_property' });
+Favorites.belongsTo(Users, { foreignKey: 'id_user' });
+Favorites.belongsTo(Properties, { foreignKey: 'id_property' });
 
 Users.hasMany(Ratings, { foreignKey: 'id_user' });
 Properties.hasMany(Ratings, { foreignKey: 'id_property' });

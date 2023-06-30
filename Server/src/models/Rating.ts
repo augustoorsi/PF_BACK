@@ -56,6 +56,20 @@ const Rating = (sequelize: Sequelize) => {
         date_rating: {
             type: DataTypes.DATEONLY,
             allowNull: false
+        },
+        is_active: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: true
+        },
+        is_reported: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: false
+        },
+        report_reason: {
+            type: DataTypes.STRING(200),
+            allowNull: true,
         }
     },
     {
