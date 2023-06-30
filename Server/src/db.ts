@@ -30,8 +30,6 @@ Service(sequelize);
 Location(sequelize);
 Favorite(sequelize);
 
-
-
 const { Users, Ratings, Rents, Properties, Services, Favorites } = sequelize.models
 
 Users.hasMany(Properties, { foreignKey: 'id_user' });
