@@ -18,7 +18,7 @@ const server: Express = express();
 mercadopago.configurations.setAccessToken("TEST-7287226739695489-062410-edcf3670bf07cd7e101763f59926a773-761450099");
 
 server.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
   console.log("Hola");
