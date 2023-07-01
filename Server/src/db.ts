@@ -9,7 +9,7 @@ import Location from './models/Locations';
 import Favorite from './models/Favorites';
 
 dotenv.config();
-const { DB_DEPLOY,DB_USER, DB_PASSWORD, DB_HOST } = process.env;
+const { DB_DEPLOY} = process.env;
 
 const sequelize: any = new Sequelize(`${DB_DEPLOY}`,{
     logging: false,
