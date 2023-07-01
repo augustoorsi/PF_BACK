@@ -9,17 +9,16 @@ import Location from './models/Locations';
 import Favorite from './models/Favorites';
 
 dotenv.config();
-const { DB_DEPLOY } = process.env;
+const { DB_DEPLOY,DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 
-// // const sequelize: Sequelize = new Sequelize(`${DB_USER}://postgres:${DB_PASSWORD}@${DB_HOST}:7823/railway`
-
-// const sequelize: Sequelize = new Sequelize(`${DB_USER}://postgres:${DB_PASSWORD}@${DB_HOST}:7823/railway`, {
+// const sequelize: any = new Sequelize(`${DB_DEPLOY}`,{
 //     logging: false,
-//     native: false
-// });
-const sequelize: any = new Sequelize(`${DB_DEPLOY}`,{
+//     native: false})
+
+const sequelize: any = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/arbnb`,{
     logging: false,
     native: false})
+
 
 
 User(sequelize)
