@@ -9,7 +9,7 @@ import Location from './models/Locations';
 import Favorite from './models/Favorites';
 
 dotenv.config();
-const { DB_USER, DB_PASSWORD, DB_HOST,DB_DEPLOY } = process.env;
+const { DB_DEPLOY } = process.env;
 
 // // const sequelize: Sequelize = new Sequelize(`${DB_USER}://postgres:${DB_PASSWORD}@${DB_HOST}:7823/railway`
 

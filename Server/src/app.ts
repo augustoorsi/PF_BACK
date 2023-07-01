@@ -17,17 +17,17 @@ const server: Express = express();
 
 mercadopago.configurations.setAccessToken("TEST-7287226739695489-062410-edcf3670bf07cd7e101763f59926a773-761450099");
 
+server.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  console.log("Hola");
+  next();
+});
 server.use(bodyParser.urlencoded({ extended: true, limit: '50mb' }));
 server.use(bodyParser.json({ limit: '50mb' }));
 server.use(morgan('dev'));
-server.use(
-    cors({
-      origin: 'https://pf-airbnb.vercel.app',
-      credentials: true,
-      allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept',
-      methods: 'GET, POST, OPTIONS, PUT, DELETE',
-    })
-);
+
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
