@@ -11,13 +11,13 @@ import Favorite from './models/Favorites';
 dotenv.config();
 const { DB_DEPLOY,DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 
-// const sequelize: any = new Sequelize(`${DB_DEPLOY}`,{
-//     logging: false,
-//     native: false})
-
-const sequelize: any = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/arbnb`,{
+const sequelize: any = new Sequelize(`${DB_DEPLOY}`,{
     logging: false,
     native: false})
+
+// const sequelize: any = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/arbnb`,{
+//     logging: false,
+//     native: false})
 
 
 
