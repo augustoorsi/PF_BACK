@@ -1,4 +1,3 @@
-import dotenv from 'dotenv';
 import server from "./src/app";
 import sequelize from './src/db';
 import createServices from './src/controllers/createServices';
@@ -6,7 +5,6 @@ import createLocations from './src/controllers/createLocations'
 import {Server} from 'socket.io'
 import http from 'http'
 
-dotenv.config();
 const PORT = 3001;
 
 const socketServer = http.createServer(server)
