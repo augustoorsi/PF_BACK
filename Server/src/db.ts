@@ -1,4 +1,3 @@
-import dotenv from 'dotenv';
 import { Sequelize } from 'sequelize';
 import User from './models/User';
 import Rating from './models/Rating';
@@ -8,16 +7,16 @@ import Service from './models/Service';
 import Location from './models/Locations';
 import Favorite from './models/Favorites';
 
-dotenv.config();
-const { DB_DEPLOY,DB_USER, DB_PASSWORD, DB_HOST } = process.env;
 
-// const sequelize: any = new Sequelize(`${DB_DEPLOY}`,{
-//     logging: false,
-//     native: false})
+const  DB_DEPLOY = "postgres://default:s8vCeA1hMWJN@ep-cool-feather-748562.us-east-1.postgres.vercel-storage.com:5432/verceldb"
 
-const sequelize: any = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/arbnb`,{
+const sequelize: any = new Sequelize(`${DB_DEPLOY}?sslmode=require`,{
     logging: false,
     native: false})
+
+// const sequelize: any = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/arbnb`,{
+//     logging: false,
+//     native: false})
 
 
 

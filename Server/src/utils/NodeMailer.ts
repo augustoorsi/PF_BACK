@@ -1,16 +1,16 @@
 const nodemailer = require("nodemailer");
 
 const transporter = nodemailer.createTransport({
-  host: "smtp.example.com",
+  host: "smtp.gmail.com",
   port: 587,
   secure: false,
   auth: {
     user: "confirmacionesairebnb@gmail.com",
-    pass: "Airebnb123",
+    pass: "arssefqosayjgxtj",
   },
 });
 
-const enviarCorreoElectronico = async (destinatario, asunto, cuerpo) => {
+const enviarCorreoElectronico = async (destinatario: any, asunto: any, cuerpo: any) => {
   try {
     const info = await transporter.sendMail({
       from: "confirmacionesairebnb@gmail.com",
@@ -25,7 +25,7 @@ const enviarCorreoElectronico = async (destinatario, asunto, cuerpo) => {
   }
 };
 
-const enviarConfirmacionReserva = async (usuario, propiedad) => {
+export const enviarConfirmacionReserva = async (usuario: any, propiedad: any) => {
   const asuntoUsuario = "Confirmación de reserva en AireBnB";
   const cuerpoUsuario = `Estimado ${usuario.nombre}, tu reserva en la propiedad ${propiedad.nombre} ha sido confirmada. ¡Disfruta de tu estancia!`;
 
@@ -38,17 +38,3 @@ const enviarConfirmacionReserva = async (usuario, propiedad) => {
   // Enviar correo al propietario
   enviarCorreoElectronico(propiedad.propietarioEmail, asuntoPropietario, cuerpoPropietario);
 };
-
-// Ejemplo de uso
-const usuario = {
-  nombre: "John Doe",
-  email: "johndoe@example.com",
-};
-
-const propiedad = {
-  nombre: "Propiedad Ejemplo",
-  propietario: "Propietario Ejemplo",
-  propietarioEmail: "propietario@example.com",
-};
-
-enviarConfirmacionReserva(usuario, propiedad);

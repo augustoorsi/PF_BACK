@@ -1,15 +1,14 @@
 import Cloudinary from "cloudinary";
-import dotenv from 'dotenv';
-dotenv.config()
+
 
 const cloudinary = Cloudinary.v2;
-const { CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, CLOUDINARY_SECRET } = process.env;
+
 
 
 cloudinary.config({
-    cloud_name: CLOUDINARY_CLOUD_NAME,
-    api_key: CLOUDINARY_API_KEY,
-    api_secret: CLOUDINARY_SECRET,
+    cloud_name: "dpwcorihe",
+    api_key: "263672788952279",
+    api_secret: "U6GpSUyO1a9t8FTnyF29XTb9u7k",
     secure: true
 });
 
