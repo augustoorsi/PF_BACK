@@ -27,7 +27,7 @@ const User = (sequelize: Sequelize) => {
             allowNull: true
         },
         number: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING,
             allowNull: true
         },
         date: {
