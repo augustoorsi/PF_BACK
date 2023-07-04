@@ -7,7 +7,7 @@ import {Server} from 'socket.io'
 import http from 'http'
 
 dotenv.config();
-const PORT = process.env.PORT || 3000;
+const PORT = 3001;
 
 const socketServer = http.createServer(server)
 const io = new Server(socketServer, {

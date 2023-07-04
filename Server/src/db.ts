@@ -9,7 +9,7 @@ import Location from './models/Locations';
 import Favorite from './models/Favorites';
 
 dotenv.config();
-const { DB_DEPLOY} = process.env;
+const  DB_DEPLOY = "postgres://default:s8vCeA1hMWJN@ep-cool-feather-748562.us-east-1.postgres.vercel-storage.com:5432/verceldb"
 
 const sequelize: any = new Sequelize(`${DB_DEPLOY}?sslmode=require`,{
     logging: false,
