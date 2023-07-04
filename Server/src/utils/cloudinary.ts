@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 dotenv.config()
 
 const cloudinary = Cloudinary.v2;
-const { CLOUDINARY_CLOUD_NAME, CLOUDINARY_API_KEY, CLOUDINARY_SECRET } = process.env;
+
 
 
 cloudinary.config({
