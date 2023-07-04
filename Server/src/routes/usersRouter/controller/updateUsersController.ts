@@ -9,7 +9,8 @@ const updateUser = async (id: string, updatedValues: Partial<typeof Users>) => {
         id_user: id,
       },
     });
-
+    console.log(updatedValues);
+    
     // Recuperar el usuario actualizado después de la actualización
     const updatedUser = await Users.findByPk(id);
     return updatedUser;
