@@ -21,6 +21,7 @@ const filterPropertiesController = async (filterProperties: Partial<any>, page: 
         accessibility,
         start_date,
         end_date,
+        order_rating
     } = filterProperties;
 
     const accessibilityClause: any = {}
@@ -29,8 +30,8 @@ const filterPropertiesController = async (filterProperties: Partial<any>, page: 
         services = [];
     }
 
-    if (accessibility !== undefined){
-        accessibilityClause.accessibility= accessibility
+    if (accessibility !== undefined) {
+        accessibilityClause.accessibility = accessibility
     }
 
     const roomsClause: any = {};
@@ -72,9 +73,9 @@ const filterPropertiesController = async (filterProperties: Partial<any>, page: 
     const maxGuestsClause: any = {};
 
     if (max_guests !== undefined) {
-      maxGuestsClause.max_guests = {
-        [Op.gte]: max_guests,
-      };
+        maxGuestsClause.max_guests = {
+            [Op.gte]: max_guests,
+        };
     }
 
     const priceClause: any = {};
@@ -92,6 +93,14 @@ const filterPropertiesController = async (filterProperties: Partial<any>, page: 
             [Op.lte]: max_price_per_night,
         };
     }
+
+    let order: OrderItem[] = [];
+
+    if (order_rating !== undefined) {
+        order.push(['rating', order_rating === 'des' ? 'DESC' : 'ASC']);
+    }
+
+    order.push(['price_per_night', order_price === 'des' ? 'DESC' : 'ASC']);
 
     const size = 100;
 
@@ -185,10 +194,9 @@ const filterPropertiesController = async (filterProperties: Partial<any>, page: 
             ...(start_date && end_date ? { start_date: { [Op.lte]: start_date }, end_date: { [Op.gte]: end_date } } : {}),
             is_active: true
         },
-        order: [['price_per_night', order_price === 'des' ? 'DESC' : 'ASC']] as OrderItem[],
+        order
     };
 
-   
 
     const properties = await Properties.findAll(options);
 
@@ -224,16 +232,16 @@ const filterPropertiesController = async (filterProperties: Partial<any>, page: 
     });
 
     const pagesNumber = Math.ceil(allProperties / size);
-    
+
 
     const filteredProperties = await Promise.all(properties.map(async (property: any) => {
         const propertyServices: any = await property.getServices();
         const propertyServiceNames = propertyServices.map((service: any) => service.name);
-    
+
         if (services && (Array.isArray(services) ? services.every((service: any) => propertyServiceNames.includes(service)) : propertyServiceNames.includes(services))) {
             return property;
         }
-    
+
         return null;
     }));
 
@@ -253,9 +261,9 @@ const filterPropertiesController = async (filterProperties: Partial<any>, page: 
             ],
         },
     });
-    
+
     const overlappingProperties = overlappingRents.map((rent: any) => rent.id_property);
-    
+
     // Devolver las propiedades que no tienen reservas que se superponen con el rango de fechas deseado
     const availableProperties = validProperties.filter((property) => !overlappingProperties.includes(property.id_property));
 
