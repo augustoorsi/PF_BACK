@@ -1,10 +1,14 @@
 import sequalize from '../../../db';
-const { Properties } = sequalize.models
+const { Properties, Rents } = sequalize.models
 
 
 const getAllPropertiesDash = async () => {
     try {
-      const properties = await Properties.findAll();
+      const properties = await Properties.findAll({
+        include:[{
+          model: Rents
+        }]
+      });
       return properties;
     } catch (error) {
       console.error(error);
