@@ -28,7 +28,7 @@ io.on('connection', (socket) => {
 
 async function startServer() {
   try {
-    await sequelize.sync({ force: false });
+    await sequelize.sync({ force: true });
     console.log('Database synchronized');
 
     await createServices();
