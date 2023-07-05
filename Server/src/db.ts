@@ -16,7 +16,7 @@ import Favorite from './models/Favorites';
 //     native: false})
 
 
-const  DB_DEPLOY = "postgres://default:s8vCeA1hMWJN@ep-cool-feather-748562.us-east-1.postgres.vercel-storage.com:5432/verceldb"
+const  DB_DEPLOY = "postgres://default:8tB9VSKAJvzj@ep-shrill-brook-892001.us-east-1.postgres.vercel-storage.com:5432/verceldb"
 
 const sequelize: any = new Sequelize(`${DB_DEPLOY}?sslmode=require`,{
     logging: false,
